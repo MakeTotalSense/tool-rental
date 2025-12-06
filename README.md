@@ -8,7 +8,7 @@ Une plateforme de location d'outils professionnels avec une expérience utilisat
 - 🧲 Curseur magnétique personnalisé
 - 🎨 Glassmorphism et effets 3D
 - 📱 Entièrement responsive
-- 🔥 Déploiement automatique sur Firebase
+
 - ⚡ Performance optimisée
 
 ## 📦 Technologies
@@ -18,7 +18,6 @@ Une plateforme de location d'outils professionnels avec une expérience utilisat
 - **Tailwind CSS 4** - Styling
 - **Framer Motion** - Animations
 - **Three.js** - Effets 3D
-- **Firebase Hosting** - Déploiement
 
 ## 🛠️ Installation
 
@@ -45,30 +44,14 @@ npm run start    # Serveur de production
 npm run lint     # Linter
 ```
 
-## 🔥 Déploiement Firebase
+## 🔥 Déploiement GitHub Pages
 
-### Configuration initiale
+### Déploiement automatique
 
-1. Créer un projet Firebase
-2. Installer Firebase CLI: `npm install -g firebase-tools`
-3. Se connecter: `firebase login`
-4. Initialiser: `firebase init hosting`
-
-### Déploiement automatique (GitHub Actions)
-
-Le projet est configuré pour un déploiement automatique via GitHub Actions.
-
-**Secrets GitHub requis:**
-- `FIREBASE_SERVICE_ACCOUNT` - Clé de compte de service
-- `FIREBASE_PROJECT_ID` - ID du projet Firebase
-
-Voir [DEPLOYMENT.md](./DEPLOYMENT.md) pour les instructions détaillées.
-
-### Déploiement manuel
+Le déploiement se fait via le package `gh-pages`.
 
 ```bash
-npm run build
-firebase deploy --only hosting
+npm run deploy
 ```
 
 ## 📄 Pages
@@ -105,6 +88,7 @@ firebase deploy --only hosting
 ## 📱 Responsive
 
 Le site est entièrement responsive avec:
+
 - Navigation mobile avec menu hamburger
 - Grilles adaptatives (1-4 colonnes)
 - Curseur désactivé sur mobile
@@ -114,7 +98,7 @@ Le site est entièrement responsive avec:
 
 ### Next.js
 
-Le projet utilise l'export statique pour Firebase:
+Le projet utilise l'export statique pour GitHub Pages:
 
 ```typescript
 // next.config.ts
@@ -122,18 +106,6 @@ Le projet utilise l'export statique pour Firebase:
   output: 'export',
   images: { unoptimized: true },
   trailingSlash: true
-}
-```
-
-### Firebase
-
-```json
-// firebase.json
-{
-  "hosting": {
-    "public": "out",
-    "rewrites": [{ "source": "**", "destination": "/index.html" }]
-  }
 }
 ```
 

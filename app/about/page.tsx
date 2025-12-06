@@ -9,21 +9,15 @@ export default function AboutPage() {
   const stats = [
     {
       icon: User,
-      label: "Bricoleurs aidés",
-      value: "150+",
+      label: "Chantiers réalisés",
+      value: "10+",
       color: "from-purple-500 to-pink-500",
     },
     {
       icon: Hammer,
-      label: "Outils partagés",
-      value: "45+",
+      label: "Outils accumulés",
+      value: "15+",
       color: "from-pink-500 to-red-500",
-    },
-    {
-      icon: Heart,
-      label: "Passion du bois",
-      value: "100%",
-      color: "from-cyan-500 to-blue-500",
     },
     {
       icon: Share2,
@@ -85,9 +79,9 @@ export default function AboutPage() {
 
             <div className="space-y-6 text-lg md:text-xl text-purple-100/90 font-light leading-relaxed">
               <p>
-                Tout a commencé il y a deux ans, lorsque j'ai acheté ma première
-                maison. Une vieille bâtisse qui avait besoin de beaucoup
-                d'amour... et de travaux.
+                Tout a commencé en 2024, lorsque j'ai acheté ma première maison.
+                Une bâtisse qui avait besoin de beaucoup d'amour... et de
+                travaux.
               </p>
               <p>
                 Comme beaucoup, je me suis lancé corps et âme dans la
@@ -97,7 +91,7 @@ export default function AboutPage() {
               </p>
               <p>
                 Une fois le gros œuvre terminé, je me suis retrouvé avec un
-                garage rempli d'équipements haut de gamme qui prenaient la
+                garage (et une cave) rempli d'équipements qui prenaient la
                 poussière.
                 <span className="text-white font-medium">
                   {" "}
@@ -109,11 +103,6 @@ export default function AboutPage() {
                 peut-être besoin pour leurs propres projets ? Plutôt que de les
                 vendre, j'ai décidé de les proposer à la location.
               </p>
-              <p className="border-l-4 border-pink-500 pl-6 italic text-white/80 my-8">
-                "Mon but n'est pas d'être une grande entreprise, mais simplement
-                un passionné qui aide d'autres passionnés à réaliser leurs
-                rêves, avec les bons outils."
-              </p>
             </div>
           </motion.div>
         </div>
@@ -122,7 +111,7 @@ export default function AboutPage() {
       {/* Stats Section */}
       <section className="py-20 px-6">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -131,7 +120,7 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
-                className="group relative"
+                className="group relative w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(25%-1.5rem)] min-w-[200px]"
               >
                 <div className="relative p-6 rounded-2xl bg-white/[0.03] backdrop-blur-sm border border-white/10 hover:bg-white/[0.07]  transition-all duration-300 h-full flex flex-col items-center justify-center text-center">
                   <div

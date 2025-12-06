@@ -97,17 +97,6 @@ export default function HeroSection() {
             >
               Explorer la Collection
             </motion.button>
-
-            <motion.button
-              whileHover={{
-                scale: 1.05,
-                backgroundColor: "rgba(255,255,255,0.1)",
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="magnetic px-10 py-5 rounded-full bg-transparent border border-white/20 text-white font-semibold text-lg backdrop-blur-sm transition-all duration-300"
-            >
-              Notre Vision
-            </motion.button>
           </motion.div>
         </motion.div>
 
@@ -116,7 +105,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 2 }}
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer magnetic"
+          className="absolute -bottom-24 left-1/2 transform -translate-x-1/2 cursor-pointer magnetic"
           onClick={scrollToTools}
         >
           <motion.div
