@@ -65,18 +65,36 @@ export default function ToolModal({ tool, onClose }: ToolModalProps) {
                 <div className="relative h-64 md:h-auto bg-gradient-to-br from-purple-900/50 to-pink-900/50 p-8 flex items-center justify-center overflow-hidden group">
                   <div className="absolute inset-0 bg-grid-pattern opacity-10" />
 
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={currentImageIndex}
-                      initial={{ opacity: 0, x: 50, scale: 0.8 }}
-                      animate={{ opacity: 1, x: 0, scale: 1 }}
-                      exit={{ opacity: 0, x: -50, scale: 0.8 }}
-                      transition={{ duration: 0.3 }}
-                      src={tool.images[currentImageIndex]}
-                      alt={tool.name}
-                      className="w-full max-w-[300px] object-contain drop-shadow-2xl relative z-10"
-                    />
-                  </AnimatePresence>
+                  <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+                    <motion.div
+                      drag="x"
+                      dragConstraints={{ left: 0, right: 0 }}
+                      dragElastic={0.2}
+                      onDragEnd={(e, { offset, velocity }) => {
+                        const swipe = Math.abs(offset.x) * velocity.x;
+
+                        if (swipe < -100) {
+                          nextImage();
+                        } else if (swipe > 100) {
+                          prevImage();
+                        }
+                      }}
+                      className="w-full h-full flex items-center justify-center"
+                    >
+                      <AnimatePresence mode="wait">
+                        <motion.img
+                          key={currentImageIndex}
+                          initial={{ opacity: 0, x: 50, scale: 0.8 }}
+                          animate={{ opacity: 1, x: 0, scale: 1 }}
+                          exit={{ opacity: 0, x: -50, scale: 0.8 }}
+                          transition={{ duration: 0.3 }}
+                          src={tool.images[currentImageIndex]}
+                          alt={tool.name}
+                          className="w-full max-w-[300px] object-contain drop-shadow-2xl relative z-10 pointer-events-none"
+                        />
+                      </AnimatePresence>
+                    </motion.div>
+                  </div>
 
                   {/* Navigation Arrows (only if > 1 image) */}
                   {tool.images.length > 1 && (
@@ -86,7 +104,7 @@ export default function ToolModal({ tool, onClose }: ToolModalProps) {
                           e.stopPropagation();
                           prevImage();
                         }}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all opacity-0 group-hover:opacity-100 z-20"
+                        className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all opacity-0 group-hover:opacity-100 z-20"
                       >
                         <ChevronLeft size={24} />
                       </button>
@@ -95,7 +113,7 @@ export default function ToolModal({ tool, onClose }: ToolModalProps) {
                           e.stopPropagation();
                           nextImage();
                         }}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all opacity-0 group-hover:opacity-100 z-20"
+                        className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all opacity-0 group-hover:opacity-100 z-20"
                       >
                         <ChevronRight size={24} />
                       </button>
