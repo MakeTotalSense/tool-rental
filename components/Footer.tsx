@@ -2,187 +2,85 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import {
-  Facebook,
-  Instagram,
-  Twitter,
-  Mail,
-  Phone,
-  MapPin,
-} from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { useBooking } from "../context/BookingContext";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { openBookingModal } = useBooking();
 
-  const footerLinks = {
-    services: [
-      { name: "Location d'outils", href: "/#tools" },
-      { name: "Catégories", href: "/#tools" },
-      { name: "Tarifs", href: "/#tools" },
-      { name: "Réservation", href: "/#tools" },
-    ],
-    company: [
-      { name: "À propos", href: "/about" },
-      { name: "Contact", href: "/contact" },
-      { name: "Blog", href: "#" },
-      { name: "Carrières", href: "#" },
-    ],
-    legal: [
-      { name: "Mentions légales", href: "#" },
-      { name: "CGV", href: "#" },
-      { name: "Politique de confidentialité", href: "#" },
-      { name: "Cookies", href: "#" },
-    ],
-  };
-
-  const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-  ];
-
   return (
-    <footer className="relative bg-gradient-to-b from-purple-900/30 to-purple-950 border-t border-purple-500/20">
-      {/* Decorative gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-pink-500/5 pointer-events-none" />
+    <footer className="relative bg-[#0f0518] border-t border-white/5 overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-purple-900/20 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="relative container mx-auto px-6 py-16">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
-          {/* Brand Column */}
-          <div className="lg:col-span-2">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent mb-4">
-                ToolRental
-              </h3>
-              <p className="text-purple-200 mb-6 max-w-sm">
-                Votre partenaire de confiance pour la location d'outils
-                professionnels. Qualité, simplicité et économie pour tous vos
-                projets.
-              </p>
-
-              {/* Contact Info */}
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 text-purple-200">
-                  <Mail className="w-4 h-4 text-purple-400" />
-                  <button
-                    onClick={() => openBookingModal("Contact via Footer")}
-                    className="text-sm hover:text-white transition-colors"
-                  >
-                    Nous contacter par email
-                  </button>
-                </div>
-                <div className="flex items-center gap-3 text-purple-200">
-                  <MapPin className="w-4 h-4 text-purple-400" />
-                  <span className="text-sm">Nancy et agglomération (54)</span>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Services Column */}
+      <div className="relative container mx-auto px-6 py-20">
+        <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
+          {/* Brand */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
+          >
+            <h3 className="text-3xl font-black tracking-tight text-white mb-4">
+              TOOL
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                RENTAL
+              </span>
+            </h3>
+            <p className="text-purple-200/60 leading-relaxed text-lg">
+              Simplifiez vos travaux avec notre service de location entre
+              particuliers sur Nancy.
+              <br />
+              Qualité, proximité et sécurité.
+            </p>
+          </motion.div>
+
+          {/* Contact Action */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
+            className="mb-12"
           >
-            <h4 className="text-white font-semibold mb-4">Services</h4>
-            <ul className="space-y-2">
-              {footerLinks.services.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-purple-200 hover:text-purple-300 transition-colors text-sm magnetic"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <button
+              onClick={() => openBookingModal("Contact via Footer")}
+              className="group relative inline-flex items-center gap-2 px-8 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-purple-500/30 transition-all duration-300"
+            >
+              <Mail className="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform" />
+              <span className="text-purple-100 font-medium group-hover:text-white">
+                Nous contacter
+              </span>
+            </button>
           </motion.div>
 
-          {/* Company Column */}
+          {/* Location Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex items-center gap-2 text-purple-200/40 text-sm mb-12 py-2 px-4 rounded-full bg-white/[0.02]"
           >
-            <h4 className="text-white font-semibold mb-4">Entreprise</h4>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-purple-200 hover:text-purple-300 transition-colors text-sm magnetic"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <MapPin className="w-3 h-3" />
+            <span>Nancy et agglomération (54)</span>
           </motion.div>
 
-          {/* Legal Column */}
+          {/* Copyright */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-purple-200/20 text-xs font-mono"
           >
-            <h4 className="text-white font-semibold mb-4">Légal</h4>
-            <ul className="space-y-2">
-              {footerLinks.legal.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-purple-200 hover:text-purple-300 transition-colors text-sm magnetic"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            © {currentYear} ToolRental. Tous droits réservés.
           </motion.div>
         </div>
-
-        {/* Bottom Bar */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="pt-8 border-t border-purple-500/20 flex flex-col md:flex-row justify-between items-center gap-4"
-        >
-          {/* Copyright */}
-          <p className="text-purple-300 text-sm">
-            © {currentYear} ToolRental. Tous droits réservés.
-          </p>
-
-          {/* Social Links */}
-          <div className="flex gap-4">
-            {socialLinks.map((social) => (
-              <motion.a
-                key={social.label}
-                href={social.href}
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-purple-300 hover:text-white hover:border-purple-500/50 transition-all duration-300 magnetic"
-                aria-label={social.label}
-              >
-                <social.icon className="w-5 h-5" />
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </footer>
   );
