@@ -19,13 +19,13 @@ function Hammer({
   scale?: number;
   rotation?: [number, number, number];
 }) {
-  const groupRef = useRef<THREE.Group>(null);
+  const innerRef = useRef<THREE.Group>(null);
 
   useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.x =
+    if (innerRef.current) {
+      innerRef.current.rotation.x =
         Math.sin(state.clock.getElapsedTime() * 0.5) * 0.2;
-      groupRef.current.rotation.y += 0.005;
+      innerRef.current.rotation.y += 0.005;
     }
   });
 
@@ -42,48 +42,49 @@ function Hammer({
   return (
     <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
       <group
-        ref={groupRef}
         position={new THREE.Vector3(...position)}
         scale={scale}
         rotation={new THREE.Euler(...rotation)}
       >
-        {/* Handle */}
-        <mesh position={[0, -1.5, 0]}>
-          <cylinderGeometry args={[0.2, 0.25, 3, 16]} />
-          <MeshTransmissionMaterial
-            {...materialProps}
-            color={new THREE.Color("#fbbf24")}
-          />{" "}
-          {/* Wood/Goldish */}
-        </mesh>
+        <group ref={innerRef}>
+          {/* Handle */}
+          <mesh position={[0, -1.5, 0]}>
+            <cylinderGeometry args={[0.2, 0.25, 3, 16]} />
+            <MeshTransmissionMaterial
+              {...materialProps}
+              color={new THREE.Color("#fbbf24")}
+            />{" "}
+            {/* Wood/Goldish */}
+          </mesh>
 
-        {/* Head Center */}
-        <mesh position={[0, 0.2, 0]} rotation={[Math.PI / 2, 0, 0]}>
-          <cylinderGeometry args={[0.3, 0.3, 1.2, 16]} />
-          <MeshTransmissionMaterial
-            {...materialProps}
-            color={new THREE.Color("#a855f7")}
-          />{" "}
-          {/* Primary Purple */}
-        </mesh>
+          {/* Head Center */}
+          <mesh position={[0, 0.2, 0]} rotation={[Math.PI / 2, 0, 0]}>
+            <cylinderGeometry args={[0.3, 0.3, 1.2, 16]} />
+            <MeshTransmissionMaterial
+              {...materialProps}
+              color={new THREE.Color("#a855f7")}
+            />{" "}
+            {/* Primary Purple */}
+          </mesh>
 
-        {/* Hammer Face (Flat) */}
-        <mesh position={[0, 0.2, 0.6]} rotation={[Math.PI / 2, 0, 0]}>
-          <cylinderGeometry args={[0.35, 0.3, 0.2, 16]} />
-          <MeshTransmissionMaterial
-            {...materialProps}
-            color={new THREE.Color("#d8b4fe")}
-          />
-        </mesh>
+          {/* Hammer Face (Flat) */}
+          <mesh position={[0, 0.2, 0.6]} rotation={[Math.PI / 2, 0, 0]}>
+            <cylinderGeometry args={[0.35, 0.3, 0.2, 16]} />
+            <MeshTransmissionMaterial
+              {...materialProps}
+              color={new THREE.Color("#d8b4fe")}
+            />
+          </mesh>
 
-        {/* Hammer Claw (Curved/Tapered) - represented by a box for simplicity in primitive composition */}
-        <mesh position={[0, 0.4, -0.6]} rotation={[-0.2, 0, 0]}>
-          <boxGeometry args={[0.4, 0.2, 1]} />
-          <MeshTransmissionMaterial
-            {...materialProps}
-            color={new THREE.Color("#d8b4fe")}
-          />
-        </mesh>
+          {/* Hammer Claw (Curved/Tapered) - represented by a box for simplicity in primitive composition */}
+          <mesh position={[0, 0.4, -0.6]} rotation={[-0.2, 0, 0]}>
+            <boxGeometry args={[0.4, 0.2, 1]} />
+            <MeshTransmissionMaterial
+              {...materialProps}
+              color={new THREE.Color("#d8b4fe")}
+            />
+          </mesh>
+        </group>
       </group>
     </Float>
   );
@@ -98,13 +99,13 @@ function Screwdriver({
   scale?: number;
   rotation?: [number, number, number];
 }) {
-  const groupRef = useRef<THREE.Group>(null);
+  const innerRef = useRef<THREE.Group>(null);
 
   useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.z =
+    if (innerRef.current) {
+      innerRef.current.rotation.z =
         Math.cos(state.clock.getElapsedTime() * 0.3) * 0.1;
-      groupRef.current.rotation.y -= 0.005;
+      innerRef.current.rotation.y -= 0.005;
     }
   });
 
@@ -121,39 +122,40 @@ function Screwdriver({
   return (
     <Float speed={3} rotationIntensity={0.8} floatIntensity={1.5}>
       <group
-        ref={groupRef}
         position={new THREE.Vector3(...position)}
         scale={scale}
         rotation={new THREE.Euler(...rotation)}
       >
-        {/* Handle */}
-        <mesh position={[0, -1, 0]}>
-          <capsuleGeometry args={[0.3, 1.5, 4, 16]} />
-          <MeshTransmissionMaterial
-            {...materialProps}
-            color={new THREE.Color("#ec4899")}
-          />{" "}
-          {/* Pink handle */}
-        </mesh>
+        <group ref={innerRef}>
+          {/* Handle */}
+          <mesh position={[0, -1, 0]}>
+            <capsuleGeometry args={[0.3, 1.5, 4, 16]} />
+            <MeshTransmissionMaterial
+              {...materialProps}
+              color={new THREE.Color("#ec4899")}
+            />{" "}
+            {/* Pink handle */}
+          </mesh>
 
-        {/* Shaft */}
-        <mesh position={[0, 0.5, 0]}>
-          <cylinderGeometry args={[0.08, 0.08, 2, 12]} />
-          <MeshTransmissionMaterial
-            {...materialProps}
-            color={new THREE.Color("#22d3ee")}
-          />{" "}
-          {/* Cyan Steel */}
-        </mesh>
+          {/* Shaft */}
+          <mesh position={[0, 0.5, 0]}>
+            <cylinderGeometry args={[0.08, 0.08, 2, 12]} />
+            <MeshTransmissionMaterial
+              {...materialProps}
+              color={new THREE.Color("#22d3ee")}
+            />{" "}
+            {/* Cyan Steel */}
+          </mesh>
 
-        {/* Tip */}
-        <mesh position={[0, 1.5, 0]}>
-          <coneGeometry args={[0.08, 0.2, 4]} />
-          <MeshTransmissionMaterial
-            {...materialProps}
-            color={new THREE.Color("#22d3ee")}
-          />
-        </mesh>
+          {/* Tip */}
+          <mesh position={[0, 1.5, 0]}>
+            <coneGeometry args={[0.08, 0.2, 4]} />
+            <MeshTransmissionMaterial
+              {...materialProps}
+              color={new THREE.Color("#22d3ee")}
+            />
+          </mesh>
+        </group>
       </group>
     </Float>
   );
