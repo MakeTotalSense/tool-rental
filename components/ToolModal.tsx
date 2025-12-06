@@ -54,7 +54,16 @@ export default function ToolModal({ tool, onClose }: ToolModalProps) {
               className="w-full max-w-4xl bg-[#1a0b2e] rounded-3xl overflow-hidden shadow-2xl border border-white/10 relative max-h-[90vh] overflow-y-auto custom-scrollbar"
             >
               <button
-                onClick={onClose}
+                onClick={(e) => {
+                  // Trigger mouseout to reset magnetic cursor
+                  const mouseOutEvent = new MouseEvent("mouseout", {
+                    bubbles: true,
+                    cancelable: true,
+                    view: window,
+                  });
+                  e.currentTarget.dispatchEvent(mouseOutEvent);
+                  onClose();
+                }}
                 className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-20 magnetic"
               >
                 <X size={20} />
