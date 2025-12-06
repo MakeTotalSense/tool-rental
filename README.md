@@ -1,36 +1,146 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ToolRental - Premium Tool Rental Website
 
-## Getting Started
+Une plateforme de location d'outils professionnels avec une expérience utilisateur premium inspirée d'Awwwards.
 
-First, run the development server:
+## 🚀 Fonctionnalités
+
+- ✨ Design premium avec animations avancées
+- 🧲 Curseur magnétique personnalisé
+- 🎨 Glassmorphism et effets 3D
+- 📱 Entièrement responsive
+- 🔥 Déploiement automatique sur Firebase
+- ⚡ Performance optimisée
+
+## 📦 Technologies
+
+- **Next.js 16** - Framework React
+- **TypeScript** - Typage statique
+- **Tailwind CSS 4** - Styling
+- **Framer Motion** - Animations
+- **Three.js** - Effets 3D
+- **Firebase Hosting** - Déploiement
+
+## 🛠️ Installation
 
 ```bash
+# Cloner le repository
+git clone <your-repo-url>
+cd tool-rental
+
+# Installer les dépendances
+npm install
+
+# Lancer le serveur de développement
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📝 Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev      # Serveur de développement
+npm run build    # Build de production
+npm run start    # Serveur de production
+npm run lint     # Linter
+```
 
-## Learn More
+## 🔥 Déploiement Firebase
 
-To learn more about Next.js, take a look at the following resources:
+### Configuration initiale
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Créer un projet Firebase
+2. Installer Firebase CLI: `npm install -g firebase-tools`
+3. Se connecter: `firebase login`
+4. Initialiser: `firebase init hosting`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Déploiement automatique (GitHub Actions)
 
-## Deploy on Vercel
+Le projet est configuré pour un déploiement automatique via GitHub Actions.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Secrets GitHub requis:**
+- `FIREBASE_SERVICE_ACCOUNT` - Clé de compte de service
+- `FIREBASE_PROJECT_ID` - ID du projet Firebase
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Voir [DEPLOYMENT.md](./DEPLOYMENT.md) pour les instructions détaillées.
+
+### Déploiement manuel
+
+```bash
+npm run build
+firebase deploy --only hosting
+```
+
+## 📄 Pages
+
+- `/` - Page d'accueil avec hero et catalogue
+- `/about` - À propos avec statistiques et valeurs
+- `/contact` - Formulaire de contact
+
+## 🎨 Composants
+
+- **MagneticCursor** - Curseur personnalisé avec physique
+- **Navbar** - Navigation avec glassmorphism
+- **HeroSection** - Section hero avec animations
+- **ToolsGrid** - Grille d'outils avec filtres
+- **Testimonials** - Témoignages clients
+- **Footer** - Pied de page complet
+
+## 📊 Structure des données
+
+- `data/tools.ts` - Catalogue d'outils
+- `data/categories.ts` - Catégories d'outils
+- `data/testimonials.ts` - Témoignages clients
+
+## 🎯 Fonctionnalités premium
+
+- Curseur magnétique avec états multiples
+- Animations de scroll avec Framer Motion
+- Filtrage par catégories
+- Glassmorphism sur tous les composants
+- Indicateur de progression de scroll
+- Animations blob organiques
+- Transitions de page fluides
+
+## 📱 Responsive
+
+Le site est entièrement responsive avec:
+- Navigation mobile avec menu hamburger
+- Grilles adaptatives (1-4 colonnes)
+- Curseur désactivé sur mobile
+- Layouts optimisés pour tablettes
+
+## 🔧 Configuration
+
+### Next.js
+
+Le projet utilise l'export statique pour Firebase:
+
+```typescript
+// next.config.ts
+{
+  output: 'export',
+  images: { unoptimized: true },
+  trailingSlash: true
+}
+```
+
+### Firebase
+
+```json
+// firebase.json
+{
+  "hosting": {
+    "public": "out",
+    "rewrites": [{ "source": "**", "destination": "/index.html" }]
+  }
+}
+```
+
+## 📄 License
+
+MIT
+
+## 👨‍💻 Auteur
+
+Créé avec ❤️ pour une expérience utilisateur premium
