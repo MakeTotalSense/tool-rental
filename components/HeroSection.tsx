@@ -57,7 +57,7 @@ export default function HeroSection() {
           >
             <Sparkles className="w-4 h-4 text-amber-300" />
             <span className="text-sm text-purple-100/90 font-medium tracking-wide uppercase">
-              L'excellence à Nancy
+              Location entre particuliers à Nancy
             </span>
           </motion.div>
 
@@ -75,11 +75,11 @@ export default function HeroSection() {
             variants={itemVariants}
             className="text-xl md:text-2xl text-purple-200/80 mb-12 max-w-2xl mx-auto font-light leading-relaxed"
           >
-            Élevez vos projets avec notre gamme d'outils{" "}
-            <span className="text-white font-medium">d'exception</span>{" "}
-            disponibles sur Nancy et sa région.
-            <br className="hidden md:block" /> Une expérience de location
-            fluide, rapide et sans compromis.
+            La solution simple pour louer des outils{" "}
+            <span className="text-white font-medium">entre particuliers</span>{" "}
+            sur Nancy.
+            <br className="hidden md:block" /> Économisez sur vos projets ou
+            rentabilisez votre matériel en toute sécurité.
           </motion.p>
 
           <motion.div

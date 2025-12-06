@@ -5,6 +5,8 @@ import { testimonials } from "../data/testimonials";
 import { Star } from "lucide-react";
 
 export default function Testimonials() {
+  if (testimonials.length === 0) return null;
+
   return (
     <section className="py-20 px-6 bg-gradient-to-b from-transparent to-purple-900/30">
       <div className="container mx-auto">
@@ -46,7 +48,10 @@ export default function Testimonials() {
                   {/* Stars */}
                   <div className="flex gap-1 mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      <Star
+                        key={i}
+                        className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                      />
                     ))}
                   </div>
 
@@ -63,8 +68,12 @@ export default function Testimonials() {
                       className="w-12 h-12 rounded-full border-2 border-purple-500/50"
                     />
                     <div>
-                      <p className="text-white font-semibold text-sm">{testimonial.name}</p>
-                      <p className="text-purple-300 text-xs">{testimonial.role}</p>
+                      <p className="text-white font-semibold text-sm">
+                        {testimonial.name}
+                      </p>
+                      <p className="text-purple-300 text-xs">
+                        {testimonial.role}
+                      </p>
                     </div>
                   </div>
                 </div>
