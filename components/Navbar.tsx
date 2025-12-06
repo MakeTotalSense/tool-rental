@@ -59,7 +59,29 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
-              <Link key={item.name} href={item.href} className="magnetic">
+              <Link
+                key={item.name}
+                href={item.href}
+                className="magnetic"
+                onClick={(e) => {
+                  if (item.href.startsWith("/#")) {
+                    // Check if we are on the home page (allowing for base path)
+                    const path = window.location.pathname;
+                    // If we are on the home page (root or base path)
+                    if (
+                      path === "/" ||
+                      path === "/tool-rental/" ||
+                      path.endsWith("/tool-rental")
+                    ) {
+                      e.preventDefault();
+                      const element = document.getElementById(
+                        item.href.substring(2)
+                      );
+                      element?.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }
+                }}
+              >
                 <motion.div
                   className="px-5 py-2 rounded-full hover:bg-white/10 text-white/80 hover:text-white transition-all text-sm font-medium"
                   whileHover={{ scale: 1.05 }}

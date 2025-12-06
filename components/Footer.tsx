@@ -71,10 +71,6 @@ export default function Footer() {
               {/* Contact Info */}
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-purple-200">
-                  <Phone className="w-4 h-4 text-purple-400" />
-                  <span className="text-sm">+33 1 23 45 67 89</span>
-                </div>
-                <div className="flex items-center gap-3 text-purple-200">
                   <Mail className="w-4 h-4 text-purple-400" />
                   <button
                     onClick={() => openBookingModal("Contact via Footer")}
