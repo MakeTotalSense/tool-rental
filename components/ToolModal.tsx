@@ -60,9 +60,9 @@ export default function ToolModal({ tool, onClose }: ToolModalProps) {
                 <X size={20} />
               </button>
 
-              <div className="grid md:grid-cols-2">
+              <div className="grid md:grid-cols-2 h-full">
                 {/* Carousel Section */}
-                <div className="relative h-64 md:h-auto bg-gradient-to-br from-purple-900/50 to-pink-900/50 p-8 flex items-center justify-center overflow-hidden group">
+                <div className="relative h-64 md:h-full bg-gradient-to-br from-purple-900/50 to-pink-900/50 p-8 flex items-center justify-center overflow-hidden group">
                   <div className="absolute inset-0 bg-grid-pattern opacity-10" />
 
                   <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
@@ -146,7 +146,7 @@ export default function ToolModal({ tool, onClose }: ToolModalProps) {
                 </div>
 
                 {/* Content Section */}
-                <div className="p-8 text-left">
+                <div className="p-8 text-left overflow-y-auto custom-scrollbar h-full max-h-[60vh] md:max-h-[calc(90vh-2px)]">
                   <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
                     {tool.name}
                   </h2>
@@ -163,64 +163,170 @@ export default function ToolModal({ tool, onClose }: ToolModalProps) {
                     {tool.description}
                   </p>
 
-                  <div className="space-y-6">
-                    {tool.usage && (
-                      <div className="bg-white/5 rounded-xl p-4 border border-white/5">
-                        <div className="flex items-center gap-2 mb-2 text-pink-400">
-                          <Info size={18} />
-                          <h3 className="font-semibold text-sm uppercase tracking-wider">
-                            Usage Recommandé
-                          </h3>
+                  <div className="space-y-4">
+                    {tool.specifications && tool.specifications.length > 0 && (
+                      <details className="group bg-purple-500/10 rounded-xl border border-purple-500/20 overflow-hidden">
+                        <summary className="flex items-center justify-between p-4 cursor-pointer list-none select-none">
+                          <div className="flex items-center gap-2 text-purple-400">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="18"
+                              height="18"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                              <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                              <line x1="12" y1="22.08" x2="12" y2="12" />
+                            </svg>
+                            <h3 className="font-semibold text-sm uppercase tracking-wider">
+                              Caractéristiques
+                            </h3>
+                          </div>
+                          <span className="transform group-open:rotate-180 transition-transform duration-300">
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              className="text-purple-400"
+                            >
+                              <path d="M6 9l6 6 6-6" />
+                            </svg>
+                          </span>
+                        </summary>
+                        <div className="px-4 pb-4 pt-0">
+                          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
+                            {tool.specifications.map((spec, idx) => (
+                              <li
+                                key={idx}
+                                className="text-sm text-gray-300 flex items-center gap-2"
+                              >
+                                <span className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0" />
+                                {spec}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
-                        <p className="text-sm text-gray-300">{tool.usage}</p>
-                      </div>
+                      </details>
+                    )}
+
+                    {tool.usage && (
+                      <details className="group bg-white/5 rounded-xl border border-white/5 overflow-hidden">
+                        <summary className="flex items-center justify-between p-4 cursor-pointer list-none select-none">
+                          <div className="flex items-center gap-2 text-pink-400">
+                            <Info size={18} />
+                            <h3 className="font-semibold text-sm uppercase tracking-wider">
+                              Usage Recommandé
+                            </h3>
+                          </div>
+                          <span className="transform group-open:rotate-180 transition-transform duration-300">
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              className="text-pink-400"
+                            >
+                              <path d="M6 9l6 6 6-6" />
+                            </svg>
+                          </span>
+                        </summary>
+                        <div className="px-4 pb-4 pt-0">
+                          <p className="text-sm text-gray-300 mt-2">
+                            {tool.usage}
+                          </p>
+                        </div>
+                      </details>
                     )}
 
                     {tool.usageTips && (
-                      <div className="bg-white/5 rounded-xl p-4 border border-white/5">
-                        <div className="flex items-center gap-2 mb-3 text-cyan-400">
-                          <Lightbulb size={18} />
-                          <h3 className="font-semibold text-sm uppercase tracking-wider">
-                            Nos Conseils
-                          </h3>
-                        </div>
-                        <ul className="space-y-2">
-                          {tool.usageTips.map((tip, idx) => (
-                            <li
-                              key={idx}
-                              className="text-sm text-gray-300 flex items-start gap-2"
+                      <details className="group bg-white/5 rounded-xl border border-white/5 overflow-hidden">
+                        <summary className="flex items-center justify-between p-4 cursor-pointer list-none select-none">
+                          <div className="flex items-center gap-2 text-cyan-400">
+                            <Lightbulb size={18} />
+                            <h3 className="font-semibold text-sm uppercase tracking-wider">
+                              Nos Conseils
+                            </h3>
+                          </div>
+                          <span className="transform group-open:rotate-180 transition-transform duration-300">
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              className="text-cyan-400"
                             >
-                              <span className="mt-1.5 w-1 h-1 rounded-full bg-cyan-400 shrink-0" />
-                              {tip}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                              <path d="M6 9l6 6 6-6" />
+                            </svg>
+                          </span>
+                        </summary>
+                        <div className="px-4 pb-4 pt-0">
+                          <ul className="space-y-2 mt-2">
+                            {tool.usageTips.map((tip, idx) => (
+                              <li
+                                key={idx}
+                                className="text-sm text-gray-300 flex items-start gap-2"
+                              >
+                                <span className="mt-1.5 w-1 h-1 rounded-full bg-cyan-400 shrink-0" />
+                                {tip}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </details>
                     )}
 
                     {tool.safetyGuide && (
-                      <div className="bg-red-500/10 rounded-xl p-4 border border-red-500/20">
-                        <div className="flex items-center gap-2 mb-3 text-red-400">
-                          <Shield size={18} />
-                          <h3 className="font-semibold text-sm uppercase tracking-wider">
-                            Sécurité
-                          </h3>
-                        </div>
-                        <ul className="space-y-2">
-                          {tool.safetyGuide.map((guide, idx) => (
-                            <li
-                              key={idx}
-                              className="text-sm text-gray-300 flex items-start gap-2"
+                      <details className="group bg-red-500/10 rounded-xl border border-red-500/20 overflow-hidden">
+                        <summary className="flex items-center justify-between p-4 cursor-pointer list-none select-none">
+                          <div className="flex items-center gap-2 text-red-400">
+                            <Shield size={18} />
+                            <h3 className="font-semibold text-sm uppercase tracking-wider">
+                              Sécurité
+                            </h3>
+                          </div>
+                          <span className="transform group-open:rotate-180 transition-transform duration-300">
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              className="text-red-400"
                             >
-                              <CheckCircle
-                                size={14}
-                                className="mt-0.5 text-red-400 shrink-0"
-                              />
-                              {guide}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                              <path d="M6 9l6 6 6-6" />
+                            </svg>
+                          </span>
+                        </summary>
+                        <div className="px-4 pb-4 pt-0">
+                          <ul className="space-y-2 mt-2">
+                            {tool.safetyGuide.map((guide, idx) => (
+                              <li
+                                key={idx}
+                                className="text-sm text-gray-300 flex items-start gap-2"
+                              >
+                                <CheckCircle
+                                  size={14}
+                                  className="mt-0.5 text-red-400 shrink-0"
+                                />
+                                {guide}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </details>
                     )}
                   </div>
 

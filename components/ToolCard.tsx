@@ -152,7 +152,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ imageSrc, title, price }) => {
                     textShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
                   }}
                 >
-                  {typeof price === "number" ? `$${price}/day` : price}
+                  {typeof price === "number" ? `${price}€/jour` : price}
                 </p>
               </div>
             </div>

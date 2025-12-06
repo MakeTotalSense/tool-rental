@@ -17,6 +17,8 @@ export default function ToolsGrid() {
       : tools.filter((tool) =>
           tool.category
             .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
             .replace(/\s+/g, "-")
             .includes(selectedCategory)
         );
@@ -59,24 +61,35 @@ export default function ToolsGrid() {
           >
             Tous
           </button>
-          {categories.map((category, index) => (
-            <motion.button
-              key={category.id}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: 0.1 * index }}
-              onClick={() => setSelectedCategory(category.id)}
-              className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 magnetic ${
-                selectedCategory === category.id
-                  ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/50"
-                  : "bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20"
-              }`}
-            >
-              <span className="mr-2">{category.icon}</span>
-              {category.name}
-            </motion.button>
-          ))}
+          {categories
+            .filter((category) =>
+              tools.some((tool) =>
+                tool.category
+                  .toLowerCase()
+                  .normalize("NFD")
+                  .replace(/[\u0300-\u036f]/g, "")
+                  .replace(/\s+/g, "-")
+                  .includes(category.id)
+              )
+            )
+            .map((category, index) => (
+              <motion.button
+                key={category.id}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.1 * index }}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 magnetic ${
+                  selectedCategory === category.id
+                    ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/50"
+                    : "bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20"
+                }`}
+              >
+                <span className="mr-2">{category.icon}</span>
+                {category.name}
+              </motion.button>
+            ))}
         </motion.div>
 
         {/* Tools Grid */}
