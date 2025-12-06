@@ -1,6 +1,6 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   Float,
   Environment,
@@ -174,6 +174,9 @@ function Particles() {
 }
 
 function Scene() {
+  const { viewport } = useThree();
+  const isMobile = viewport.width < 6;
+
   return (
     <>
       <ambientLight intensity={0.5} />
@@ -189,11 +192,15 @@ function Scene() {
       <Environment preset="city" />
 
       <group position={[0, 0, 0]}>
-        <Hammer position={[2.5, 0, 0]} scale={0.8} rotation={[0, 0, -0.5]} />
+        <Hammer
+          position={isMobile ? [1, 2.5, 0] : [3, 0, 0]}
+          scale={isMobile ? 0.5 : 0.8}
+          rotation={isMobile ? [0, 0, 0.5] : [0, 0, -0.5]}
+        />
         <Screwdriver
-          position={[-2.5, 0.5, -1]}
-          scale={0.8}
-          rotation={[0, 0, 0.5]}
+          position={isMobile ? [-1, -2.5, 0] : [-3, 0.5, -1]}
+          scale={isMobile ? 0.5 : 0.8}
+          rotation={isMobile ? [0, 0, -0.5] : [0, 0, 0.5]}
         />
       </group>
 
