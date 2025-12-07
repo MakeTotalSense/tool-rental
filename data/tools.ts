@@ -8,8 +8,6 @@ export interface Tool {
   specifications: string[];
   images: string[];
   available: boolean;
-  rating: number;
-  reviews: number;
   usage?: string;
   usageTips?: string[];
   safetyGuide?: string[];
@@ -20,23 +18,20 @@ export const tools: Tool[] = [
     id: 1,
     name: "Meuleuse d'angle (batterie)",
     description: "Meuleuse d'angle robuste pour tronçonner et ébarber. Indispensable pour la coupe de métaux et matériaux durs.",
-    image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=600",
+    image: "https://www.bosch-diy.com/imagestorage/fr-be/universalgrind-18v-75-100057220-hires-png-rgb-oneux-388300_w_3200_h_1600.png?imgWidth=3200&imgHeight=1600",
     pricePerDay: 15,
     category: "Électroportatif",
     specifications: [
-      "Puissance: 800W",
-      "Disque: 125mm",
-      "Filaire 230V",
+      "Batterie 18V incluse",
+      "Disque: 115mm",
       "Poignée latérale 2 positions",
       "Carter de protection orientable"
     ],
     images: [
-      "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=600"
+      "https://www.bosch-diy.com/imagestorage/fr-be/universalgrind-18v-75-100057220-hires-png-rgb-oneux-388300_w_3200_h_1600.png?imgWidth=3200&imgHeight=1600",
+      "https://i.ebayimg.com/00/s/MTQzNlgxNDQw/z/fpMAAOSwN51lzqyB/$_57.JPG?set_id=880000500F"
     ],
     available: true,
-    rating: 4.7,
-    reviews: 24,
     usage: "Découpe de tuyaux métalliques, briques, carrelage ou meulage de soudures.",
     usageTips: [
       "Vérifiez l'état du disque avant chaque utilisation",
@@ -67,13 +62,11 @@ export const tools: Tool[] = [
       "https://images.unsplash.com/photo-1629904869752-130541743432?auto=format&fit=crop&q=80&w=600"
     ],
     available: true,
-    rating: 4.8,
-    reviews: 18,
     usage: "Ponçage de dégrossissage ou de finition sur bois, métal et plastique.",
     usageTips: [
       "Commencez avec un grain grossier et finissez avec un grain fin",
-      "N'appuyez pas trop fort pour éviter de marquer le bois",
-      "Videz le réservoir à poussière régulièrement"
+      "N'appuyez pas trop fort pour éviter de marquer le bois ou l'enduit",
+      "Videz le réservoir à poussière régulièrement ou branchez-y un aspirateur"
     ],
     safetyGuide: [
       "Portez un masque anti-poussière",
@@ -100,8 +93,6 @@ export const tools: Tool[] = [
       "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&q=80&w=600"
     ],
     available: true,
-    rating: 4.9,
-    reviews: 42,
     usage: "Coupe de plinthes, parquet, tasseaux ou profilés alu avec précision.",
     usageTips: [
       "Bloquez bien la pièce à couper avec les étaux",
@@ -118,7 +109,7 @@ export const tools: Tool[] = [
     id: 4,
     name: "Coupe-bordure (batterie)",
     description: "Léger et maniable, idéal pour les finitions de jardin < 50m² sans contrainte de fil.",
-    image: "https://images.unsplash.com/photo-1622287431718-42e7c41eb407?auto=format&fit=crop&q=80&w=600",
+    image: "https://www.bosch-diy.com/imagestorage/fr-fr/easygrasscut-18v-26-100053443-hires-png-rgb-oneux-359265_w_1474_h_1474.png?imgWidth=1474&imgHeight=1474",
     pricePerDay: 20,
     category: "Jardin",
     specifications: [
@@ -129,11 +120,11 @@ export const tools: Tool[] = [
       "Manche télescopique"
     ],
     images: [
-      "https://images.unsplash.com/photo-1622287431718-42e7c41eb407?auto=format&fit=crop&q=80&w=600"
+      "https://www.bosch-diy.com/imagestorage/fr-fr/easygrasscut-18v-26-100053443-hires-png-rgb-oneux-359265_w_1474_h_1474.png?imgWidth=1474&imgHeight=1474",
+      "https://www.bosch-diy.com/imagestorage/en-gb/easygrasscut-26-100053348-hires-png-rgb-oneux-358195_w_3200_h_1600.png?imgWidth=3200&imgHeight=1600",
+      "https://www.powertoolworld.co.uk/media/catalog/product/cache/0116182253c5f60b6fc682c7434d441c/b/o/bosch-06008c1f70-a3-bosch-universalgrasscut-18v-26-500-p4a-18-volt-powerforall-grass-trimmer_1.jpg"
     ],
     available: true,
-    rating: 4.5,
-    reviews: 15,
     usage: "Finitions le long des murs, grillages et autour des arbres. Aussi utilisable pour tondre des petits jardins.",
     usageTips: [
       "Avancez le fil régulièrement pour une coupe nette",
@@ -150,22 +141,23 @@ export const tools: Tool[] = [
     id: 5,
     name: "Bineuse électrique (filaire)",
     description: "Motobineuse électrique compacte pour retourner la terre de potagers entre 50 et 200m².",
-    image: "https://images.unsplash.com/photo-1592429408663-1457df7336c1?auto=format&fit=crop&q=80&w=600",
+    image: "https://media.castorama.fr/is/image/Castorama/motoculteur-electrique-scheppach-mte460-1500-w~4046664090977_01c_FR_CF?$MOB_PREV$&$width=1200&$height=1200",
     pricePerDay: 25,
     category: "Jardin",
     specifications: [
-      "Puissance: 1000W",
-      "Largeur de travail: 36cm",
+      "Puissance: 1500W",
+      "Largeur de travail: 450mm",
       "Profondeur: 20cm",
       "4 fraises en acier",
-      "Guidon pliable"
+      "Guidon pliable",
+      "24 couteaux"
     ],
     images: [
-      "https://images.unsplash.com/photo-1592429408663-1457df7336c1?auto=format&fit=crop&q=80&w=600"
+      "https://media.castorama.fr/is/image/Castorama/motoculteur-electrique-scheppach-mte460-1500-w~4046664090977_01c_FR_CF?$MOB_PREV$&$width=1200&$height=1200",
+      "https://m.media-amazon.com/images/I/815GhzoAJZL._AC_UF1000,1000_QL80_.jpg",
+      "https://m.media-amazon.com/images/I/81lnCBLhm+L.jpg"
     ],
     available: true,
-    rating: 4.6,
-    reviews: 12,
     usage: "Préparation du sol avant semis, désherbage mécanique des plate-bandes.",
     usageTips: [
       "Retirez les grosses pierres avant de passer la machine",
@@ -196,8 +188,6 @@ export const tools: Tool[] = [
       "https://images.unsplash.com/photo-1536605055047-975dc5add72b?auto=format&fit=crop&q=80&w=600"
     ],
     available: false,
-    rating: 5.0,
-    reviews: 8,
     usage: "Passages de tuyaux, gaines vmc, ou prélèvements dans murs béton.",
     usageTips: [
       "Utilisez de l'eau pour refroidir le trépan et limiter la poussière",
@@ -228,8 +218,6 @@ export const tools: Tool[] = [
       "https://images.unsplash.com/photo-1616782299719-20ff68194d2f?auto=format&fit=crop&q=80&w=600"
     ],
     available: true,
-    rating: 4.8,
-    reviews: 56,
     usage: "Perçage béton, pierre, brique ou retrait de carrelage.",
     usageTips: [
       "Graissez la queue des forets avant insertion",
@@ -246,23 +234,22 @@ export const tools: Tool[] = [
     id: 9,
     name: "Perceuse visseuse (batterie)",
     description: "L'outil indispensable. Légère, maniable, pour tous vissages et perçages bois/métal.",
-    image: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&q=80&w=600",
+    image: "https://www.bosch-diy.com/imagestorage/fr-fr/universalimpact-18v-60-100053514-hires-png-rgb-oneux-371707_w_1474_h_1474.png?imgWidth=1474&imgHeight=1474",
     pricePerDay: 12,
     category: "Électroportatif",
     specifications: [
-      "Batterie 18V Li-Ion",
-      "Couple 50Nm",
+      "Batterie 18V incluse",
+      "Couple 40Nm",
       "Mandrin 13mm auto",
       "2 vitesses",
+      "3 modes (vissage, perçage, percution",
       "Éclairage LED"
     ],
     images: [
-      "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&q=80&w=600"
+      "https://www.bosch-diy.com/imagestorage/fr-fr/universalimpact-18v-60-100053514-hires-png-rgb-oneux-371707_w_1474_h_1474.png?imgWidth=1474&imgHeight=1474",
+      "https://m.media-amazon.com/images/I/71UEKg7WplL._AC_UF1000,1000_QL80_.jpg"
     ],
     available: true,
-    rating: 4.9,
-    reviews: 89,
     usage: "Montage de meubles, accrochage de tableaux, perçage bois et métal.",
     usageTips: [
       "Réglez le couple pour ne pas abîmer les têtes de vis",
@@ -278,23 +265,20 @@ export const tools: Tool[] = [
   {
     id: 10,
     name: "Brouette de chantier",
-    description: "Brouette tout-terrain renforcée. Roue increvable.",
-    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=600",
+    description: "Brouette tout-terrain renforcée.",
+    image: "https://static.vecteezy.com/system/resources/previews/017/345/410/non_2x/3d-rendering-of-wheelbarrow-object-free-png.png",
     pricePerDay: 5,
     category: "Manutention",
     specifications: [
       "Cuve 100L",
       "Charge max: 150kg",
-      "Roue pleine (pas de crevaison)",
       "Châssis tubulaire renforcé",
       "Poignées ergonomiques"
     ],
     images: [
-      "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=600"
+      "https://static.vecteezy.com/system/resources/previews/017/345/410/non_2x/3d-rendering-of-wheelbarrow-object-free-png.png"
     ],
     available: true,
-    rating: 4.7,
-    reviews: 33,
     usage: "Transport de terre, gravats, sacs de ciment ou outils sur chantier.",
     usageTips: [
       "Chargez le poids sur la roue (à l'avant) pas sur les bras",
@@ -311,22 +295,21 @@ export const tools: Tool[] = [
     id: 11,
     name: "Scie sabre (batterie)",
     description: "La scie de démolition par excellence. Coupe bois, métal, plastique et plâtre sans effort.",
-    image: "https://images.unsplash.com/photo-1566938064504-a38b58f89b6c?auto=format&fit=crop&q=80&w=600",
+    image: "https://media.mr-bricolage.fr/media/catalog/product/0/6/06033b2300-3165140739894-visuel_produit_base-610289_600_370.png",
     pricePerDay: 18,
     category: "Électroportatif",
     specifications: [
-      "Puissance: 1100W",
+      "Batterie 18V incluse",
       "Course de la lame: 28mm",
       "Vitesse variable",
       "Changement de lame sans outil",
-      "Fournie avec lames bois et métal"
+      "Fournie avec lames bois, métal ou brique"
     ],
     images: [
-      "https://images.unsplash.com/photo-1566938064504-a38b58f89b6c?auto=format&fit=crop&q=80&w=600"
+      "https://media.mr-bricolage.fr/media/catalog/product/0/6/06033b2300-3165140739894-visuel_produit_base-610289_600_370.png",
+      "https://www.bosch-diy.com/imagestorage/en-gb/06033b2402-advancedrecip-18-fcp-2000x2000px-386823-png-image-png_w_3200_h_1600.png?imgWidth=3200&imgHeight=1600"
     ],
     available: true,
-    rating: 4.6,
-    reviews: 28,
     usage: "Démolition de cloisons, découpe de tuyaux, élagage de grosses branches.",
     usageTips: [
       "Plaquez bien le sabot contre la pièce à découper pour éviter les vibrations",
@@ -342,24 +325,24 @@ export const tools: Tool[] = [
   {
     id: 12,
     name: "Scie sauteuse (filaire)",
-    description: "Pour vos découpes courbes et précises dans le bois, le mélaminé ou le métal.",
-    image: "https://images.unsplash.com/photo-1610543666662-7945d81b2382?auto=format&fit=crop&q=80&w=600",
+    description: "Pour vos découpes courbes et précises dans le bois ou le métal.",
+    image: "https://www.bosch-diy.com/imagestorage/fr-fr/pst-900-pel-100024168-hires-png-rgb-oneux-67888_w_1920_h_1080.png?imgWidth=1920&imgHeight=1080",
     pricePerDay: 12,
     category: "Électroportatif",
     specifications: [
-      "Mouvement pendulaire 4 positions",
+      "Mouvement pendulaire 2 positions",
       "Soufflerie de copeaux",
       "Guidage précis",
       "Variateur de vitesse",
-      "Inclinaison de la semelle 45°"
+      "Possibilité de brancher un aspirateur",
+      "620W"
     ],
     images: [
-      "https://images.unsplash.com/photo-1610543666662-7945d81b2382?auto=format&fit=crop&q=80&w=600"
+      "https://www.bosch-diy.com/imagestorage/fr-fr/pst-900-pel-100024168-hires-png-rgb-oneux-67888_w_1920_h_1080.png?imgWidth=1920&imgHeight=1080",
+      "https://m.media-amazon.com/images/I/61v+5MvoigL._AC_UF1000,1000_QL80_.jpg"
     ],
     available: true,
-    rating: 4.7,
-    reviews: 54,
-    usage: "Découpe de plan de travail (évier), parquet, ou formes courbes.",
+    usage: "Découpe droite ou courbée de bois et metal.",
     usageTips: [
       "Coupez sur l'envers pour ne pas écailler le parement (sauf si lame inversée)",
       "Utilisez le mouvement pendulaire pour aller vite (coupe grossière)",
@@ -370,5 +353,64 @@ export const tools: Tool[] = [
       "Portez des lunettes de protection",
       "Débranchez pour changer la lame"
     ]
-  }
+  },
+  {
+    id: 13,
+    name: "Ponceuse d'angle (filaire)",
+    description: "Ponceuse d'angle polyvalente pour un ponçage fin et rapide des angles.",
+    image: "https://images.unsplash.com/photo-1629904869752-130541743432?auto=format&fit=crop&q=80&w=600",
+    pricePerDay: 18,
+    category: "Électroportatif",
+    specifications: [
+      
+      "Filaire 230V",
+      "Variateur de vitesse",
+      "Système micro-filtre",
+      "Mouvement orbital et rotatif"
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1629904869752-130541743432?auto=format&fit=crop&q=80&w=600"
+    ],
+    available: true,
+    usage: "Ponçage de dégrossissage ou de finition sur bois, métal et plastique.",
+    usageTips: [
+      "Commencez avec un grain grossier et finissez avec un grain fin",
+      "N'appuyez pas trop fort pour éviter de marquer le bois ou l'enduit",
+      "Videz le réservoir à poussière régulièrement ou branchez-y un aspirateur"
+    ],
+    safetyGuide: [
+      "Portez un masque anti-poussière",
+      "Portez des protections auditives",
+      "Attendez l'arrêt complet du plateau avant de poser la machine"
+    ]
+  },
+  {
+    id: 14,
+    name: "Aspirateur de chantier (filaire)",
+    description: "Aspirateur de chantier polyvalent pour nettoyer les surfaces ou brancher à vos appareils",
+    image: "https://images.unsplash.com/photo-1629904869752-130541743432?auto=format&fit=crop&q=80&w=600",
+    pricePerDay: 20,
+    category: "Électroportatif",
+    specifications: [
+      "Filaire 230V",
+      "Variateur de vitesse",
+      "Système micro-filtre",
+      "Mouvement orbital et rotatif"
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1629904869752-130541743432?auto=format&fit=crop&q=80&w=600"
+    ],
+    available: true,
+    usage: "Nettoyage de surfaces ou brancher à vos appareils.",
+    usageTips: [
+      "Commencez avec un grain grossier et finissez avec un grain fin",
+      "N'appuyez pas trop fort pour éviter de marquer le bois ou l'enduit",
+      "Videz le réservoir à poussière régulièrement ou branchez-y un aspirateur"
+    ],
+    safetyGuide: [
+      "Portez un masque anti-poussière",
+      "Portez des protections auditives",
+      "Attendez l'arrêt complet du plateau avant de poser la machine"
+    ]
+  },
 ];

@@ -159,14 +159,6 @@ export default function ToolModal({ tool, onClose }: ToolModalProps) {
                   <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
                     {tool.name}
                   </h2>
-                  <div className="flex items-center gap-2 mb-6">
-                    <div className="flex text-yellow-500">
-                      {"★".repeat(Math.round(tool.rating))}
-                    </div>
-                    <span className="text-purple-300 text-sm">
-                      ({tool.reviews} avis)
-                    </span>
-                  </div>
 
                   <p className="text-purple-100/80 mb-8 leading-relaxed">
                     {tool.description}

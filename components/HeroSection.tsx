@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { motion, Variants } from "motion/react";
 import { ArrowDown, Sparkles } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const HeroScene = dynamic(() => import("./3D/HeroScene"), { ssr: false });
 
@@ -11,6 +12,18 @@ export default function HeroSection() {
     const toolsSection = document.getElementById("tools");
     toolsSection?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const [show3D, setShow3D] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShow3D(window.innerWidth >= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -35,7 +48,7 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0f0518]">
       {/* 3D Background Scene */}
-      <HeroScene />
+      {show3D && <HeroScene />}
 
       {/* Deep Gradient Overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0f0518]/20 to-[#0f0518] pointer-events-none" />
